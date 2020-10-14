@@ -83,6 +83,7 @@ $(buildtree)/fip/fip.bin: FORCE
 		$(buildtree)/fip/bl301_zero.bin, \
 		$(buildtree)/fip/bl30_new.bin, \
 		bl30)
+	$(Q)$(buildsrc)/fip/parse $(buildtree)/$(BOARDDIR)/firmware/acs.bin
 	$(call fix_blx, \
 		$(buildsrc)/fip/$(SOC)/bl2.bin, \
 		$(buildtree)/fip/zero_tmp, \
@@ -136,6 +137,8 @@ endif
 			--ddrfw1 $(buildsrc)/fip/$(SOC)/ddr4_1d.fw \
 			--ddrfw2 $(buildsrc)/fip/$(SOC)/ddr4_2d.fw \
 			--ddrfw4 $(buildsrc)/fip/$(SOC)/piei.fw \
+			--ddrfw5 $(buildsrc)/fip/$(SOC)/lpddr4_1d.fw \
+			--ddrfw6 $(buildsrc)/fip/$(SOC)/lpddr4_2d.fw \
 			--ddrfw8 $(buildsrc)/fip/$(SOC)/$(DDR_FW_NAME) \
 			--output $(FUSING_FOLDER)/u-boot.bin)
 ifeq ($(CONFIG_AML_CRYPTO_UBOOT),y)

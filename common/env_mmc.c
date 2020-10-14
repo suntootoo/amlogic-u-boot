@@ -67,6 +67,8 @@ __weak int mmc_get_env_addr(struct mmc *mmc, int copy, u32 *env_addr)
 		offset = CONFIG_ENV_OFFSET_REDUND;
 #endif
 
+	printf("mmc env offset: 0x%llx \n",offset);
+
 #else /* CONFIG_STORE_COMPATIBLE */
 	part_info = find_mmc_partition_by_name(name);
 	if (part_info == NULL) {
