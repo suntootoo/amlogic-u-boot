@@ -186,7 +186,7 @@ static inline void eth_hw_addr_random(struct eth_device *dev)
 }
 #endif
 
-#if !defined(CONFIG_ODROID_COMMON)
+#if !defined(CONFIG_AML_G12A_COMMON)
 static int eth_get_efuse_mac(struct eth_device *dev)
 {
 #ifndef CONFIG_UNIFY_KEY_MANAGE

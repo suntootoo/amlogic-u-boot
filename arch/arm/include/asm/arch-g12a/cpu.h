@@ -79,7 +79,7 @@
 
 #define NR_CPUS		4
 
-#if !defined(CONFIG_ODROID_COMMON)
+#if !defined(CONFIG_AML_G12A_COMMON)
 #define CONFIG_OF_LIBFDT_OVERLAY 1
 #define CONFIG_CMD_DTIMG 1
 #endif

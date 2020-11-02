@@ -34,7 +34,7 @@
 #include <malloc.h>
 #include <fs.h>
 #include <amlogic/edid-decode.h>
-#include "../board/hardkernel/odroid-common/odroid-common.h"
+#include <odroid-common.h>
 
 static int claims_one_point_oh = 0;
 static int claims_one_point_two = 0;

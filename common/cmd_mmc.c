@@ -11,8 +11,8 @@
 
 static int curr_device = -1;
 
-#if defined(CONFIG_ODROID_COMMON)
-#include "../board/hardkernel/odroid-common/odroid-common.h"
+#if defined(CONFIG_AML_G12A_COMMON)
+#include <odroid-common.h>
 
 __weak int board_current_mmc(void)
 {

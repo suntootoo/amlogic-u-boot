@@ -40,7 +40,7 @@ static ulong env_new_offset	= CONFIG_ENV_OFFSET_REDUND;
 
 DECLARE_GLOBAL_DATA_PTR;
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 #define env_name_spec		sf_env_name_spec
 #define saveenv			sf_saveenv
 #define env_init		sf_env_init
@@ -337,7 +337,7 @@ int env_init(void)
 	return 0;
 }
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 struct env_proxy env_proxy_sf = {
 	.env_name_spec_cb = &sf_env_name_spec,
 	.env_init_cb = sf_env_init,

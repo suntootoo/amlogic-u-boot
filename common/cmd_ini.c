@@ -255,7 +255,7 @@ U_BOOT_CMD(
 	"section [[file-address] file-size]"
 );
 
-#ifndef CONFIG_ODROID_COMMON
+#ifndef CONFIG_AML_G12A_COMMON
 static int do_ini_model_list(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 {
 	int ret;

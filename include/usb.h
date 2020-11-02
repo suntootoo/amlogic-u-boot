@@ -433,7 +433,7 @@ int usb_new_device(struct usb_device *dev);
 void usb_free_device(void);
 int usb_alloc_device(struct usb_device *dev);
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 extern int board_usbhost_early_power(void);
 
 #define usb_printf(fmt, args...)			\

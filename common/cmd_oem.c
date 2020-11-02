@@ -2,7 +2,7 @@
 #include <common.h>
 #include <command.h>
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 extern int board_fdisk_all(void);
 
 static int do_oemfdisk(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])

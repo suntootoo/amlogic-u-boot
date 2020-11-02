@@ -658,6 +658,7 @@ libs-y += test/dm/
 #libs-y += $(if $(BOARDDIR),board/$(BOARDDIR)/)
 libs-y += $(if $(BOARDDIR),$(BOARDDIR)/)
 libs-$(CONFIG_ODROID_COMMON) += board/hardkernel/odroid-common/
+libs-$(CONFIG_BANANAPI_COMMON) += board/bananapi/bananapi-common/
 
 libs-y := $(sort $(libs-y))
 
@@ -763,7 +764,7 @@ ifneq ($(CONFIG_BUILD_TARGET),)
 ALL-y += $(CONFIG_BUILD_TARGET:"%"=%)
 endif
 
-ALL-$(CONFIG_ODROID_COMMON) += bootimage
+ALL-$(CONFIG_AML_G12A_COMMON) += bootimage
 
 LDFLAGS_u-boot += $(LDFLAGS_FINAL)
 ifneq ($(CONFIG_SYS_TEXT_BASE),)

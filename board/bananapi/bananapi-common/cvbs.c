@@ -31,5 +31,4 @@ int board_cvbs_probe()
 	setenv_ulong("cvbscable", probed);
 
 	return probed;
-
 }

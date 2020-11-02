@@ -790,7 +790,7 @@ static int label_boot(cmd_tbl_t *cmdtp, struct pxe_label *label)
 	kernel_addr = genimg_get_kernel_addr(bootm_argv[1]);
 	buf = map_sysmem(kernel_addr, 0);
 
-#ifdef CONFIG_ODROID_COMMON
+#if defined(CONFIG_AML_G12A_COMMON)
 #ifdef CONFIG_CMD_BOOTI
 	do_booti(cmdtp, 0, bootm_argc, bootm_argv);
 #endif

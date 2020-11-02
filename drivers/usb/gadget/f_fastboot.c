@@ -1271,7 +1271,7 @@ static void cb_devices(struct usb_ep *ep, struct usb_request *req)
 	fastboot_tx_write_str(response);
 }
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 extern int board_fdisk_all(void);
 #endif
 
@@ -1280,7 +1280,7 @@ static void cb_oem_cmd(struct usb_ep *ep, struct usb_request *req)
 	char response[RESPONSE_LEN/2 + 1];
 	char* cmd = req->buf;
 	printf("oem cmd[%s]\n", cmd);
-#if !defined(CONFIG_ODROID_COMMON)	// FIXME: Why??
+#if !defined(CONFIG_AML_G12A_COMMON)	// FIXME: Why??
 	static int i = 0;
 #endif
 	memcpy(response, cmd, strnlen(cmd, RESPONSE_LEN/2)+1);//+1 to terminate str
@@ -1288,7 +1288,7 @@ static void cb_oem_cmd(struct usb_ep *ep, struct usb_request *req)
 	strsep(&cmd, " ");
 	FB_MSG("To run cmd[%s]\n", cmd);
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	if (!strcmp(cmd, "fdisk")) {
 		if (board_fdisk_all() == 0)
 			fastboot_okay(response);
@@ -1301,7 +1301,7 @@ static void cb_oem_cmd(struct usb_ep *ep, struct usb_request *req)
 
 	run_command(cmd, 0);
 
-#if !defined(CONFIG_ODROID_COMMON)	// FIXME: Why??
+#if !defined(CONFIG_AML_G12A_COMMON)	// FIXME: Why??
     if (++i > 3) i = 0;
 
 	i ? fastboot_busy("AMLOGIC") : fastboot_okay(response);

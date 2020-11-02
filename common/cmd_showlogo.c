@@ -13,7 +13,7 @@
 #include <asm/errno.h>
 #include <vsprintf.h>
 #include <linux/kernel.h>
-#include <../board/hardkernel/odroid-common/odroid-common.h>
+#include <odroid-common.h>
 
 static struct odroid_resolution {
 	const char *name;

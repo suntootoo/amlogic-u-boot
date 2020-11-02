@@ -22,7 +22,7 @@ static int usb_stor_curr_dev = -1; /* current device */
 static int usb_ether_curr_dev = -1; /* current ethernet device */
 #endif
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 __weak int board_usbhost_early_power(void)
 {
 	return 0;
@@ -495,7 +495,7 @@ static int do_usb(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 		usb_stop();
 		usb_printf("(Re)start USB...\n");
 		if (usb_init() >= 0) {
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 			if (!board_usbhost_early_power()) {
 #endif
 #ifdef CONFIG_USB_STORAGE
@@ -509,7 +509,7 @@ static int do_usb(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 #ifdef CONFIG_USB_KEYBOARD
 			drv_usb_kbd_init();
 #endif
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 			}
 #endif
 		}

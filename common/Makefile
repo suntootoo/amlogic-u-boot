@@ -87,7 +87,7 @@ obj-$(CONFIG_CMD_CBFS) += cmd_cbfs.o
 obj-$(CONFIG_CMD_CLK) += cmd_clk.o
 obj-$(CONFIG_CMD_CONSOLE) += cmd_console.o
 obj-$(CONFIG_CMD_SARADC) += cmd_saradc.o
-ifndef CONFIG_ODROID_COMMON
+ifndef CONFIG_AML_G12A_COMMON
 obj-$(CONFIG_CMD_SARADC) += cmd_forceupdate.o
 endif
 obj-$(CONFIG_CMD_CPLBINFO) += cmd_cplbinfo.o
@@ -132,7 +132,7 @@ obj-$(CONFIG_CMD_HASH) += cmd_hash.o
 obj-$(CONFIG_CMD_IDE) += cmd_ide.o
 obj-$(CONFIG_CMD_IMMAP) += cmd_immap.o
 
-ifndef CONFIG_ODROID_COMMON
+ifndef CONFIG_AML_G12A_COMMON
 ifdef CONFIG_CMD_INI
 obj-y += ini/model.o ini/ini_proxy.o ini/UnifyKey.o ini/ini_platform.o ini/ini_io.o ini/ini_handler.o ini/ini_core.o ini/ini_log.o
 endif
@@ -365,8 +365,8 @@ endif
 
 CFLAGS_env_embedded.o := -Wa,--no-warn -DENV_CRC=$(shell tools/envcrc 2>/dev/null)
 
-obj-$(CONFIG_ODROID_COMMON) += cmd_movi.o
-obj-$(CONFIG_ODROID_COMMON) += cmd_cfgload.o
-obj-$(CONFIG_ODROID_COMMON) += cmd_oem.o
-obj-$(CONFIG_ODROID_COMMON) += env_proxy.o
-obj-$(CONFIG_ODROID_COMMON) += cmd_showlogo.o
+obj-$(CONFIG_AML_G12A_COMMON) += cmd_movi.o
+obj-$(CONFIG_AML_G12A_COMMON) += cmd_cfgload.o
+obj-$(CONFIG_AML_G12A_COMMON) += cmd_oem.o
+obj-$(CONFIG_AML_G12A_COMMON) += env_proxy.o
+obj-$(CONFIG_AML_G12A_COMMON) += cmd_showlogo.o

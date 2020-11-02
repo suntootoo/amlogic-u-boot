@@ -344,7 +344,7 @@ static int get_fdto_totalsize(u32 *tz)
 }
 #endif
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 extern int get_boot_device(void);
 static int bootm_add_ignore_mpt_to_fdt(void *fdth)
 {
@@ -512,7 +512,7 @@ static int bootm_find_fdt(int flag, int argc, char * const argv[])
 
 	set_working_fdt_addr(images.ft_addr);
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	bootm_add_ignore_mpt_to_fdt(images.ft_addr);
 #endif
 

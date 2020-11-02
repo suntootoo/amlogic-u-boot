@@ -90,7 +90,7 @@ U_BOOT_CMD(
 #if defined(CONFIG_CMD_DHCP)
 static int do_dhcp(cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 {
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	setenv("autoload", "no");
 #endif
 

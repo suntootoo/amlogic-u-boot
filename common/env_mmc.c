@@ -26,7 +26,7 @@
 #error CONFIG_ENV_SIZE_REDUND should be the same as CONFIG_ENV_SIZE
 #endif
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 #define env_name_spec		mmc_env_name_spec
 #if !defined(CONFIG_STORE_COMPATIBLE)
 #define saveenv			mmc_saveenv
@@ -381,7 +381,7 @@ err:
 }
 #endif /* CONFIG_ENV_OFFSET_REDUND */
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 struct env_proxy env_proxy_mmc = {
 	.env_name_spec_cb = &mmc_env_name_spec,
 	.env_init_cb = mmc_env_init,

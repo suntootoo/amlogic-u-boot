@@ -25,7 +25,7 @@
 #include <mpc8xx.h>
 #endif
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 #include <linux/ctype.h>
 
 static
@@ -59,7 +59,7 @@ source (ulong addr, const char *fit_uname)
 	const void	*fit_data;
 	size_t		fit_len;
 #endif
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	int size;
 #endif
 
@@ -153,7 +153,7 @@ source (ulong addr, const char *fit_uname)
 		break;
 #endif
 	default:
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 		size = check_odroid_script(addr, CONFIG_DEVICE_PRODUCT);
 		if (size > 0) {
 			data = (u32*)(addr + size);

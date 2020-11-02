@@ -255,8 +255,13 @@ config PXP_EMULATOR
 config SUPPORT_CUSOTMER_BOARD
 	bool "Customer board support"
 
+config AML_G12A_COMMON
+        bool
+        default n
+
 config ODROID_COMMON
 	bool
+	select AML_G12A_COMMON
 	default n
 
 config ODROID_C2
@@ -278,6 +283,16 @@ config ODROID_C4
 	bool "Support Hardkernel ODROID-C4 board"
 	select ODROID_COMMON
 	default n
+
+config BANANAPI_COMMON
+        bool
+	select AML_G12A_COMMON
+        default n
+
+config BANANAPI_M5
+        bool "Support Bananapi M5 board"
+        select BANANAPI_COMMON
+        default n
 
 if GXB_SKT_V1
 source "board/amlogic/gxb_skt_v1/Kconfig"
@@ -542,4 +557,8 @@ endif
 
 if ODROID_C4
 source "board/hardkernel/odroidc4/Kconfig"
+endif
+
+if BANANAPI_M5
+source "board/bananapi/bananapi_m5/Kconfig"
 endif

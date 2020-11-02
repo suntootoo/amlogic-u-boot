@@ -1,12 +1,12 @@
 /*
- * include/configs/odroid-g12-common.h
+ * include/configs/bananapi-g12-common.h
  *
  * (C) Copyright 2018 Hardkernel Co., Ltd
  * * SPDX-License-Identifier:     GPL-2.0+
  */
 
-#ifndef __ODROID_G12_COMMON_H__
-#define __ODROID_G12_COMMON_H__
+#ifndef __BANANAPI_G12_COMMON_H__
+#define __BANANAPI_G12_COMMON_H__
 
 #include <asm/arch/cpu.h>
 #include <linux/sizes.h>
@@ -36,7 +36,7 @@
 #define CONFIG_SARADC_CH			2
 
 /* ADC keys */
-#undef CONFIG_ADC_KEY
+#define CONFIG_ADC_KEY
 #ifdef CONFIG_ADC_KEY
 #define CONFIG_ADC_POWER_KEY_CHAN		2  /* channel range: 0-7*/
 #define CONFIG_ADC_POWER_KEY_VAL		0  /* sample value range: 0-1023*/
@@ -52,8 +52,8 @@
 #define CONFIG_SERIAL_MULTI			1
 
 /* Enable ir remote wake up for bl30 */
-#define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL1	0x23DC4DB2 /* hardkernel ir --- power */
-#define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL2	0XFFFFFFFF
+#define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL1  0xff00fe01
+#define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL2  0xf10eaf40
 #define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL3	0xFFFFFFFF
 #define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL4	0XFFFFFFFF
 #define CONFIG_IR_REMOTE_POWER_UP_KEY_VAL5	0xFFFFFFFF
@@ -80,7 +80,7 @@
 
 #define ENV_PXE_DEFAULT					\
 	"pxefile_addr_r=0x1070000\0"			\
-	"pxeuuid=" ODROID_BOARD_UUID "\0"		\
+	"pxeuuid=" BANANAPI_BOARD_UUID "\0"		\
 	"bootfile=Image\0"				\
 	"boot_pxe="					\
 		"dhcp; "				\
@@ -96,7 +96,7 @@
 
 #define ENV_BOOT_ORDER_DEFAULT			"boot_order=mmc rawimage usb pxe spi\0"
 
-#define ENV_BOOTSCRIPTS_DEFAULT			"boot_scripts=bananapi/bpi-c4/linux/boot.ini bananapi/bpi-c4/linux/boot.scr boot.ini boot.scr\0"
+#define ENV_BOOTSCRIPTS_DEFAULT			"boot_scripts=bananapi/bpi-m5/linux/boot.ini bananapi/bpi-m5/linux/boot.scr boot.ini boot.scr\0"
 
 #define ENV_BOOT_ATTEMPT_DEFAULT			\
 	"boot_attempt="					\

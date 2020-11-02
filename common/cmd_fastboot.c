@@ -12,7 +12,7 @@
 #include <g_dnl.h>
 #include <mmc.h>
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 extern int board_partition_list(void);
 #endif
 
@@ -20,7 +20,7 @@ static int do_fastboot(cmd_tbl_t *cmdtp, int flag, int argc, char *const argv[])
 {
 	int ret;
 
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	board_partition_list();
 
 	int mmc_dev = board_current_mmc();

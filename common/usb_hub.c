@@ -100,7 +100,7 @@ static void usb_hub_power_on(struct usb_hub_device *hub)
 	 * Wait for power to become stable,
 	 * plus spec-defined max time for device to connect
 	 */
-#if defined(CONFIG_ODROID_COMMON)
+#if defined(CONFIG_AML_G12A_COMMON)
 	if (board_usbhost_early_power())
 		delay = 0;
 #endif

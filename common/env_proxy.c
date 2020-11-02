@@ -9,7 +9,7 @@
 #include <common.h>
 #include <env_proxy.h>
 
-#include "../board/hardkernel/odroid-common/odroid-common.h"
+#include <odroid-common.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
