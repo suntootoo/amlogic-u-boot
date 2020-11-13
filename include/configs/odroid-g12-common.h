@@ -96,7 +96,7 @@
 
 #define ENV_BOOT_ORDER_DEFAULT			"boot_order=mmc rawimage usb pxe spi\0"
 
-#define ENV_BOOTSCRIPTS_DEFAULT			"boot_scripts=bananapi/bpi-c4/linux/boot.ini bananapi/bpi-c4/linux/boot.scr boot.ini boot.scr\0"
+#define ENV_BOOTSCRIPTS_DEFAULT			"boot_scripts=boot.ini boot.scr\0"
 
 #define ENV_BOOT_ATTEMPT_DEFAULT			\
 	"boot_attempt="					\
