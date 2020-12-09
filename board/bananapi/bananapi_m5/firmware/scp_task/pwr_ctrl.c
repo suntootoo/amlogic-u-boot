@@ -51,10 +51,28 @@ static void set_vddee_voltage(unsigned int target_voltage)
 
 static void power_off_at_24M(unsigned int suspend_from)
 {
+	uart_puts("set sd power off\n");
+
+	/* set gpioE_2 output/low to power off sd vddio */
+	//writel(readl(AO_GPIO_O) & (~(1 << 18)), AO_GPIO_O);
+	//writel(readl(AO_GPIO_O_EN_N) & (~(1 << 18)), AO_GPIO_O_EN_N);
+	//writel(readl(AO_RTI_PIN_MUX_REG1) & (~(0xf << 24)), AO_RTI_PIN_MUX_REG1);
+
+	/* set gpioH_8 low to power off sd vdd */
+	writel(readl(PREG_PAD_GPIO3_EN_N) & (~(1 << 8)), PREG_PAD_GPIO3_EN_N);
+	writel(readl(PERIPHS_PIN_MUX_C) & (~(0xf)), PERIPHS_PIN_MUX_C);
+
+	/* set gpioAO_6 output/low to set sd 3v3_1v8_en to 3v3 default */
+	//writel(readl(AO_GPIO_O) & (~(1 << 6)), AO_GPIO_O);
+	//writel(readl(AO_GPIO_O_EN_N) & (~(1 << 6)), AO_GPIO_O_EN_N);
+	//writel(readl(AO_RTI_PIN_MUX_REG) & (~(0xf << 24)), AO_RTI_PIN_MUX_REG);
+
 	if (!enable_5V_system_power) {
-		/*set gpioH_8 low to power off vcc 5v*/
-		writel(readl(PREG_PAD_GPIO3_EN_N) & (~(1 << 8)), PREG_PAD_GPIO3_EN_N);
-		writel(readl(PERIPHS_PIN_MUX_C) & (~(0xf)), PERIPHS_PIN_MUX_C);
+		uart_puts("set 5v power off\n");
+		/*set gpioH_6 low to power off vcc 5v*/
+		writel(readl(PREG_PAD_GPIO3_O) & (~(1 << 6)), PREG_PAD_GPIO3_O);
+		writel(readl(PREG_PAD_GPIO3_EN_N) & (~(1 << 6)), PREG_PAD_GPIO3_EN_N);
+		writel(readl(PERIPHS_PIN_MUX_B) & (~(0xf << 24)), PERIPHS_PIN_MUX_B);
 	}
 
 	if (!enable_wol) {
@@ -73,6 +91,22 @@ static void power_on_at_24M(unsigned int suspend_from)
 	/*step up ee voltage*/
 	set_vddee_voltage(CONFIG_VDDEE_INIT_VOLTAGE);
 
+	uart_puts("set sd power on\n");
+	
+	/* set gpioE_2 output/high to power on sd vddio */
+	//writel(readl(AO_GPIO_O) | (1 << 18), AO_GPIO_O);
+	//writel(readl(AO_GPIO_O_EN_N) & (~(1 << 18)), AO_GPIO_O_EN_N);
+	//writel(readl(AO_RTI_PIN_MUX_REG1) & (~(0xf << 24)), AO_RTI_PIN_MUX_REG1);
+
+	/* set gpioH_8 output/external pull high to power on sd vdd */
+	writel(readl(PREG_PAD_GPIO3_EN_N) | (1 << 8), PREG_PAD_GPIO3_EN_N);
+	writel(readl(PERIPHS_PIN_MUX_C) & (~(0xf)), PERIPHS_PIN_MUX_C);
+
+	/* set gpioAO_6 output/low to set sd 3v3_1v8_en to 3v3 default */
+	//writel(readl(AO_GPIO_O) & (~(1 << 6)), AO_GPIO_O);
+	//writel(readl(AO_GPIO_O_EN_N) & (~(1 << 6)), AO_GPIO_O_EN_N);
+	//writel(readl(AO_RTI_PIN_MUX_REG) & (~(0xf << 24)), AO_RTI_PIN_MUX_REG);
+
 	if (!enable_wol) {
 		/*set test_n high to power on vcck_b & vcc 3.3v*/
 		writel(readl(AO_GPIO_O) | (1 << 31), AO_GPIO_O);
@@ -82,9 +116,11 @@ static void power_on_at_24M(unsigned int suspend_from)
 	}
 
 	if (!enable_5V_system_power) {
-		/*set gpioH_8 low to power on vcc 5v*/
-		writel(readl(PREG_PAD_GPIO3_EN_N) | (1 << 8), PREG_PAD_GPIO3_EN_N);
-		writel(readl(PERIPHS_PIN_MUX_C) & (~(0xf)), PERIPHS_PIN_MUX_C);
+		uart_puts("set 5v power on\n");
+		/*set gpioH_6 high to power on vcc 5v*/
+		writel(readl(PREG_PAD_GPIO3_O) | (1 << 6), PREG_PAD_GPIO3_O);
+		writel(readl(PREG_PAD_GPIO3_EN_N) & (~(1 << 6)), PREG_PAD_GPIO3_EN_N);
+		writel(readl(PERIPHS_PIN_MUX_B) & (~(0xf << 24)), PERIPHS_PIN_MUX_B);
 	}
 
 	_udelay(10000);
