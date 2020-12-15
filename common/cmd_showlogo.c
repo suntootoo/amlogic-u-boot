@@ -158,7 +158,7 @@ static int do_showlogo(cmd_tbl_t *cmdtp, int flag, int argc,
 	if (argc <= 1) {
 		mode = getenv("hdmimode");
 		/* ODROID default logo size 1280x720 */
-		display_logo((NULL == mode) ? "1080p60hz" : mode, "1280", "720");
+		display_logo((NULL == mode) ? "1080p60hz" : mode, "1920", "1080");
 	} else if (argc == 4) {
 		display_logo(argv[1], argv[2], argv[3]);
 	} else {
