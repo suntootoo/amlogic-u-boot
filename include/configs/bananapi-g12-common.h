@@ -208,9 +208,11 @@
                 "fdt addr ${dtb_mem_addr};" \
                 "fdt resize 8192;" \
                 "fdt apply ${loadaddr};" \
+            "else if test " CONFIG_DEVICE_PRODUCT " = bananapi_m5; then " \
+                "cramfsload ${dtb_mem_addr} meson64_${variant}_android.dtb;" \
             "else " \
                 "cramfsload ${dtb_mem_addr} meson64_odroid${variant}_android.dtb;" \
-            "fi;" \
+            "fi;fi;" \
             "movi read recovery 0 ${loadaddr}; " \
             "booti ${loadaddr} - ${dtb_mem_addr}; " \
             "bootm ${loadaddr};" \
@@ -227,9 +229,11 @@
                 "fdt addr ${dtb_mem_addr};" \
                 "fdt resize 8192;" \
                 "fdt apply ${loadaddr};" \
+            "else if test " CONFIG_DEVICE_PRODUCT " = bananapi_m5; then " \
+                "cramfsload ${dtb_mem_addr} meson64_${variant}_android.dtb;" \
             "else " \
                 "cramfsload ${dtb_mem_addr} meson64_odroid${variant}_android.dtb;" \
-            "fi;" \
+            "fi;fi;" \
 	        "movi read boot 0 ${loadaddr}; " \
 	        "booti ${loadaddr} - ${dtb_mem_addr}; " \
 	        "bootm ${loadaddr}; " \
